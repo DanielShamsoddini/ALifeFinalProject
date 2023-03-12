@@ -23,6 +23,7 @@ Scientific Method:
 
     Accounting for Synaptic Weights:
         Either fixed weight for synapses or random discrete weight numbers from a list, ex. (-1,-0.5,0.5,1)
+            Fixed Weight of 1 in both control and evolved
 
 Technical Specifications:
 

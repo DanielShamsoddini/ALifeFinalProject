@@ -330,8 +330,8 @@ class SOLUTION:
 		if self.randlength < 5:
 			self.randlength = 5
 		
-		if self.randlength > 2.5 * self.startlength:
-			self.randlength = int((2.5 * self.startlength))
+		if self.randlength > 2 * self.startlength:
+			self.randlength = (2* self.startlength) - 2
 
 
 
