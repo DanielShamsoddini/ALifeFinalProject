@@ -18,20 +18,3 @@ destroy semaphore
 semaphore destroyed
 destroy main semaphore
 main semaphore destroyed
-Traceback (most recent call last):
-  File "/Users/danix/ALife/ALifeFinalProject/simulate.py", line 6, in <module>
-    simulation = SIMULATION(dorg, brainnn)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/danix/ALife/ALifeFinalProject/simulation.py", line 26, in __init__
-    self.Run()
-  File "/Users/danix/ALife/ALifeFinalProject/simulation.py", line 35, in Run
-    self.robot.Sense()
-  File "/Users/danix/ALife/ALifeFinalProject/robot.py", line 33, in Sense
-    self.sensors[sensorss].Get_Value()
-  File "/Users/danix/ALife/ALifeFinalProject/sensor.py", line 10, in Get_Value
-    self.values[self.a] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/danix/ALife/ALifeFinalProject/pyrosim/pyrosim.py", line 53, in Get_Touch_Sensor_Value_For_Link
-    pts = p.getContactPoints()
-          ^^^^^^^^^^^^^^^^^^^^
-pybullet.error: Not connected to physics server.
