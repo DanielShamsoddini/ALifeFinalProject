@@ -1,4 +1,4 @@
-import numpy
+#import numpy
 import pyrosim.pyrosim as pyrosim
 import pybullet as p
 
@@ -6,9 +6,9 @@ class MOTOR:
 	def __init__(self, jname,rid, amp,freq, phofs):
 		self.jointName = jname
 		self.robotId = rid
-		self.amplitude = amp
-		self.frequency = freq
-		self.phaseOffset =phofs
+		# self.amplitude = amp
+		# self.frequency = freq
+		# self.phaseOffset =phofs
 		self.a = 0
 
 

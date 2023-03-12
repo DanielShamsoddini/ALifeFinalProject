@@ -2,10 +2,10 @@
 from solution import SOLUTION
 import constants as c
 import copy
-import os
+#import os
 import numpy
 import pickle
-import time
+#import time
 
 
 
@@ -97,7 +97,7 @@ class PARALLEL_HILL_CLIMBER:
 		pickle.dump(self.parents[minarg], picklefile)
 		picklefile.close()
 		
-		time.sleep(5)
+		#time.sleep(5)
 		picklefile2 = open(self.sample, 'rb')
 		pickled = pickle.load(picklefile2)
 		pickled.Best_Simulation("GUI")

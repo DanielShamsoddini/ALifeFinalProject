@@ -6,7 +6,7 @@ import constants as c
 from pyrosim.neuralNetwork import NEURAL_NETWORK
 import os
 import math
-import numpy
+#import numpy
 
 class ROBOT:
 	def __init__(self, brainnn):
@@ -17,6 +17,7 @@ class ROBOT:
 		self.nn = NEURAL_NETWORK("brain"+ brainnn+".nndf")
 		#print(brainnn)
 		os.system("rm brain"+brainnn+".nndf")
+		os.system("rm body"+brainnn+".urdf")
 		self.brainval = brainnn
 		self.ifHit = 0
 		self.bigblock = [5,10]
@@ -35,9 +36,9 @@ class ROBOT:
 
 	def Prepare_To_Act(self):
 		self.motors = {}
-		self.amplitude = c.amplitudeB
-		self.frequency = c.frequencyB
-		self.offset = c.phaseOffsetB
+		self.amplitude = 1
+		self.frequency = 1
+		self.offset = 1
 		for jointName in pyrosim.jointNamesToIndices:
 			self.motors[jointName] = MOTOR(jointName,self.robotId, self.amplitude, self.frequency, self.offset)
 		#print(self.motors)

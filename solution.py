@@ -4,8 +4,7 @@ import os
 import random
 import time
 import constants as c
-import pybullet as p
-import pybullet_data
+
 
 
 class SOLUTION:
@@ -15,6 +14,7 @@ class SOLUTION:
 		self.myID = nextav
 		self.a = numpy.zeros((c.numSensorNeurons, c.numMotorNeurons))
 		self.randlength = random.randint(8,c.randlen-1)
+		self.startlength = self.randlength
 		self.weights = 2*numpy.random.rand(4*self.randlength, 4*self.randlength) - 1
 		#self.sensorrandom = [random.randint(0, 5) for a in range(self.randlength+1)]
 		self.blocks = [[self.randsize(), random.choice(("Green", "Blue")), self.randomdirgenerator()] for a in range(self.randlength*4)]
@@ -303,7 +303,7 @@ class SOLUTION:
 
 	def Wait_For_Simulation_To_End(self):
 		while not os.path.exists("fitness" + str(self.myID)+".txt"):
-			time.sleep(0.01)
+			time.sleep(0.00001)
 		f = open("fitness" + str(self.myID)+".txt", "r")
 		self.fitness = float(f.read())
 		#print(self.fitness)
@@ -326,6 +326,14 @@ class SOLUTION:
 
 		else:
 			self.randlength -= 1
+		
+		if self.randlength < 5:
+			self.randlength = 5
+		
+		if self.randlength > 2.5 * self.startlength:
+			self.randlength = int((2.5 * self.startlength))
+
+
 
 	def Set_ID(self, numb):
 		self.myID = numb
