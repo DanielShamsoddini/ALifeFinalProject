@@ -31,10 +31,10 @@ class SIMULATION:
         #self.delee()
 
     def Run(self):
-        sleeptime = 1/600
+        sleeptime = 1/300
 #        if self.directOrGUI == "DIRECT":
 #            sleeptime = 0
-        for a in range(0,5000):
+        for a in range(0,3000):
             p.stepSimulation()
             self.robot.Sense()
             self.robot.Think()

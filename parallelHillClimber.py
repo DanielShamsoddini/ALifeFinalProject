@@ -4,8 +4,13 @@ import constants as c
 import copy
 import os
 import numpy
+import pickle
+import time
+
+
+
 class PARALLEL_HILL_CLIMBER:
-	def __init__(self):
+	def __init__(self, picklename):
 		#os.system("rm brain*.nndf")
 		#os.system("rm fitness*.txt")
 		self.parents = {}
@@ -16,6 +21,8 @@ class PARALLEL_HILL_CLIMBER:
 				if randseed != None:
 					randseed += 1
 				self.nextAvailableID = self.nextAvailableID + 1    
+
+		self.sample = picklename
 		#print(self.parents)
 		#exit()
 
@@ -25,7 +32,7 @@ class PARALLEL_HILL_CLIMBER:
 		# self.parent.Evaluate("GUI")
 		for currentGeneration in range(c.numberOfGenerations):
 			self.Evolve_For_One_Generation()
-			#print("generation"+ str(currentGeneration))
+			print("generation"+ str(currentGeneration))
 
 		self.Show_Best()
 		#self.Print()
@@ -75,7 +82,7 @@ class PARALLEL_HILL_CLIMBER:
 		minarg = numpy.argmax(parentfitness)
 		print()
 		
-		fil = open("seed1.txt", "a")
+		fil = open(self.sample + ".txt", "a")
 		fil.write(str(self.parents[minarg].fitness) + " ")
 		fil.close()
 
@@ -86,5 +93,12 @@ class PARALLEL_HILL_CLIMBER:
 		parentfitness = [self.parents[parent].fitness for parent in self.parents]
 		minarg = numpy.argmax(parentfitness)
 		#print(self.parents[minarg].fitness)
-		self.parents[minarg].Best_Simulation("GUI")
+		picklefile = open(self.sample, 'wb')
+		pickle.dump(self.parents[minarg], picklefile)
+		picklefile.close()
+		
+		time.sleep(5)
+		picklefile2 = open(self.sample, 'rb')
+		pickled = pickle.load(picklefile2)
+		pickled.Best_Simulation("GUI")
 		exit()

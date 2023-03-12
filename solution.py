@@ -283,7 +283,7 @@ class SOLUTION:
 		# while not os.path.exists("brain.nndf"):
 		#   time.sleep(0.01)
 		os.system("python3 simulate.py " + dOrG +" "+str(self.myID)+
-						  #" 2&>1"+
+						  " 2&>1"+
 						  " &")
 
 	def Best_Simulation(self, dOrG):
@@ -298,7 +298,7 @@ class SOLUTION:
 		# while not os.path.exists("brain.nndf"):
 		#   time.sleep(0.01)
 		os.system("python3 simulate.py " + dOrG +" "+str(self.myID)+
-						  #" 2&>1"+
+						  " 2&>1"+
 						  " &")
 
 	def Wait_For_Simulation_To_End(self):
@@ -309,7 +309,7 @@ class SOLUTION:
 		#print(self.fitness)
 		f.close()
 		os.system("rm " + "fitness" + str(self.myID)+".txt")
-		os.system("rm body*.urdf")
+		#os.system("rm body*.urdf")
 
 	def Mutate(self):
 		self.weights[random.randint(0,numpy.array(self.weights).shape[0]-1)][random.randint(0,numpy.array(self.weights).shape[1]-1)] = (random.random()*2) - 1
