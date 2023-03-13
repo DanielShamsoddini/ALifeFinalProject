@@ -11,11 +11,13 @@ class SOLUTION:
 	def __init__(self, nextav, randseed):
 		if randseed != None:
 			random.seed(randseed)
+			numpy.random.seed(randseed)
 		self.myID = nextav
 		self.a = numpy.zeros((c.numSensorNeurons, c.numMotorNeurons))
-		self.randlength = random.randint(8,c.randlen-1)
+		self.randlength = random.randint(6,c.randlen)
 		self.startlength = self.randlength
-		self.weights = 2*numpy.random.rand(4*self.randlength, 4*self.randlength) - 1
+		#self.weights = 2*numpy.random.rand(4*self.randlength, 4*self.randlength) - 1
+		self.weights = [random.choice([-1,1]) for a in range(1000)]
 		#self.sensorrandom = [random.randint(0, 5) for a in range(self.randlength+1)]
 		self.blocks = [[self.randsize(), random.choice(("Green", "Blue")), self.randomdirgenerator()] for a in range(self.randlength*4)]
 		self.jointnames = []
@@ -135,59 +137,6 @@ class SOLUTION:
 				return False
 		return True
 
-		# while numblocks < self.randlength:
-		# 	num_num = 5
-		# 	if self.randlength - a < 5:
-		# 		num_num = 5 - (self.randlength - a) 
-		# 	num_connects = random.randint(1,num_num) -1
-		# 	connect_types = ["up", "down", "west", "east", "north", "south"]
-		# 	pyrosim.Send_Cube(name = "Box"+str(a+numblocks), pos = [0,0,1], size = self.blocks[a+numblocks][0], color = self.blocks[a+numblocks][1])
-		# 	numblocks+=1
-		# 	for b in range(1,num_connects):
-		# 		print(str(a-1) + "\n")
-		# 		print(str(a+b) + "\n")
-		# 		print(str(num_connects)+"\n")
-		# 		print("randlen" + str(self.randlength))
-		# 		connect_choice = random.choice(connect_types)
-		# 		connect_types.remove(connect_choice)
-		# 		
-		# 		pyrosim.Send_Joint(name = "Box"+str(a-1)+"_Box"+str(a+b), parent = "Box"+str(a-1) , child = "Box"+str(a+b), type = "revolute", position = xyz, jointAxis = "0 0 1")
-		# 		print("Box"+str(a-1)+"_Box"+str(a+b) + "\n")
-		# 		pyrosim.Send_Cube(name = "Box"+str(a+numblocks), pos = [0,0,1], size = self.blocks[a+numblocks][0], color = self.blocks[a+b][1])
-		# 		print("Box"+str(a+b))
-		# 		numblocks = numblocks + 1
-				
-		# 	a = a + 1
-
-
-		# pyrosim.Send_Cube(name = "Box0", pos = [0,0,1], size = tempsize)
-		# pyrosim.Send_Joint(name = "Box0_Box1", parent = "Box0", child = "Box1", type = "revolute", position = [0, (tempsize[1] + tempsize2[1])/2.0, 0], jointAxis = "1 0 0")
-		# pyrosim.Send_Cube(name = "Box1", pos = [0,0,1], size = tempsize2)
-		# pyrosim.Send_Joint(name = "Box1_Box2", parent = "Box1", child = "Box2", type = "revolute", position = [0, (tempsize2[1] + tempsize3[1])/2.0, 0], jointAxis = "1 0 0")
-		# pyrosim.Send_Cube(name = "Box2", pos = [0,0,1], size = tempsize3)
-		# pyrosim.Send_Joint(name = "Box2_Box3", parent = "Box2", child = "Box3", type = "revolute", position = [0, (tempsize3[1] + tempsize4[1])/2.0, 0], jointAxis = "1 0 0")
-		# pyrosim.Send_Cube(name = "Box3", pos = [0,0,1], size = tempsize4)
-		# for a in range(1, self.randlength):
-		# 	sizee = self.randsize()
-			
-		# 	pyrosim.Send_Joint(name = "Box"+str(a)+"_"+"Box"+str(a+1), parent = "Box"+str(a), child = "Box"+str(a+1), type = "revolute", position = self.poscalculator(a), jointAxis = "1 0 0")
-		# 	pyrosim.Send_Cube(name = "Box"+str(a+1), pos = self.poscalculator(a, blocksize = sizee), size = sizee)
-			
-			
-		
-#       pyrosim.Send_Cube(name="Torso", pos = [0,0,1.4], size = [1,1,0.5])
-#       pyrosim.Send_Joint( name = "Torso_FrontLeg" , parent= "Torso" , child = "FrontLeg" , type = "revolute", position =[0.4,0.5,1], jointAxis = "1 0 0")
-#       pyrosim.Send_Cube(name="FrontLeg", pos = [0,0,0], size= [l,h,w])
-#       pyrosim.Send_Joint( name = "Torso_BackLeg" , parent= "Torso" , child = "BackLeg" , type = "revolute", position =[0,-0.5,1], jointAxis = "1 0 0")
-#       pyrosim.Send_Cube(name="BackLeg", pos = [-0.4,-0,0], size= [l,h,w])
-#       pyrosim.Send_Joint( name = "Torso_UpLeg" , parent= "Torso" , child = "UpLeg" , type = "revolute", position =[0, 0.5,1], jointAxis = "1 0 0")
-#       pyrosim.Send_Cube(name="UpLeg", pos = [-0.4, 0,0], size= [l,h,w])
-#       pyrosim.Send_Joint( name = "Torso_DownLeg" , parent= "Torso" , child = "DownLeg" , type = "revolute", position =[0,-0.5,1], jointAxis = "1 0 0")
-#       pyrosim.Send_Cube(name="DownLeg", pos = [0.4,0,0], size= [l,h,w])
-#       pyrosim.Send_Cube(name="Head", pos = [-0.5,0.6, 0.5], size = [0.2,0.2,0.4])
-#       pyrosim.Send_Joint(name = "Torso_Head", parent = "Torso", child = "Head", type = "revolute", position = [0.5,0,1], jointAxis = "0 1 0")
-		pyrosim.End()
-
 	def targnname(self, finalorno,x,y):
 		if finalorno:
 			z = int(random.randint(5,8))
@@ -218,54 +167,13 @@ class SOLUTION:
 
 
 		#synapses
-
+		self.numsynapses= 0
 		for currentRow in numofSensors:
 			for currentColumn in numofJoints:
-				pyrosim.Send_Synapse(sourceNeuronName = currentRow , targetNeuronName = currentColumn, weight = self.weights[currentRow][currentColumn])
-
-
-
-		# neurontracker = 0
-		# for a in range(0, self.randlength-1):
-		# 	if self.blocks[a][1] == "Green":
-		# 		pyrosim.Send_Sensor_Neuron(name = neurontracker, linkName = "Box"+str(a))
-		# 		neurontracker = neurontracker + 1
-		# 	pyrosim.Send_Motor_Neuron(name = neurontracker, jointName = "Box"+str(a)+"_"+"Box"+str(a+1))
-		# 	neurontracker = neurontracker + 1
-		
-		# motorneurons = {}
-		# abc = 0
-		# for xyz in range(self.randlength):
-		# 	if self.blocks[xyz][1] == "Green":
-		# 		motorneurons[abc] = xyz
-		# 		abc = abc + 1
-
-		# print(motorneurons)
-		# print(len(motorneurons))
-		# for b in range(0,self.randlength):
-		# 	if self.blocks[b][1] == "Green":
-		# 		pyrosim.Send_Synapse(sourceNeuronName=b, targetNeuronName = motorneurons[random.randint(0,len(motorneurons.keys()) -1)], weight = 2*numpy.random.rand() - 1 )
-
-
-#       pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")
-#       pyrosim.Send_Sensor_Neuron(name = 0, linkName = "Torso")
-#       pyrosim.Send_Sensor_Neuron(name = 1, linkName = "BackLeg")
-#       pyrosim.Send_Sensor_Neuron(name = 2, linkName = "FrontLeg")
-#       pyrosim.Send_Sensor_Neuron(name = 3, linkName = "UpLeg")
-#       pyrosim.Send_Sensor_Neuron(name = 4, linkName = "DownLeg")
-#       pyrosim.Send_Motor_Neuron(name = 5, jointName = "Torso_BackLeg")
-#       pyrosim.Send_Motor_Neuron(name = 6, jointName = "Torso_FrontLeg")
-#       pyrosim.Send_Motor_Neuron(name = 7, jointName = "Torso_UpLeg")
-#       pyrosim.Send_Motor_Neuron(name = 8, jointName = "Torso_DownLeg")
-#       #pyrosim.Send_Sensor_Neuron(name = 9, linkName = "Head")
-#
-#       for currentRow in range(0,c.numSensorNeurons):
-#           for currentColumn in range (0,c.numMotorNeurons):
-#               pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = random.randint(5,8), weight =self.weights[currentRow][currentColumn])
-#       # pyrosim.Send_Synapse(sourceNeuronName = 0, targetNeuronName = 4, weight = 3.0)
-#       # pyrosim.Send_Synapse(sourceNeuronName = 1, targetNeuronName = 4, weight = 15.0)
-#       # pyrosim.Send_Synapse(sourceNeuronName = 2, targetNeuronName = 4, weight = 3.0)
-#       # pyrosim.Send_Synapse(sourceNeuronName = 0, targetNeuronName = 3, weight = 0.2)
+				#print(len(self.weights))
+				#print(self.numsynapses)
+				pyrosim.Send_Synapse(sourceNeuronName = currentRow , targetNeuronName = currentColumn, weight = self.weights[self.numsynapses])
+				self.numsynapses+=1
 		pyrosim.End()
 
 	#def Evaluate(self, dOrG):
@@ -312,26 +220,30 @@ class SOLUTION:
 		#os.system("rm body*.urdf")
 
 	def Mutate(self):
-		self.weights[random.randint(0,numpy.array(self.weights).shape[0]-1)][random.randint(0,numpy.array(self.weights).shape[1]-1)] = (random.random()*2) - 1
+		#self.weights[random.randint(0,numpy.array(self.weights).shape[0]-1)][random.randint(0,numpy.array(self.weights).shape[1]-1)] = (random.random()*2) - 1
 		probabilityint = random.randint(1,10)
-		if probabilityint > 2:
-			if probabilityint > 5:
+		#print(probabilityint)
+		if probabilityint > 4:
+			if probabilityint > 6:
 				if probabilityint > 8:
-					if random.randint(0,1) == 1:
-						self.randlength += 3
+					if probabilityint > 9:
+						self.randlength += 2
 					else:
-						self.randlength -= 3
+						self.randlength -= 2
+				else:
+					self.randlength +=1
 			else:
-				self.randlength += 1
-
+				self.randlength -=1
 		else:
-			self.randlength -= 1
+			mutateindex = random.randint(0,self.randlength-1)
+			self.blocks[mutateindex][0] = self.randsize()
+			self.blocks[mutateindex][2] = self.randomdirgenerator()
 		
 		if self.randlength < 5:
 			self.randlength = 5
 		
-		if self.randlength > 2 * self.startlength:
-			self.randlength = (2* self.startlength) - 2
+		if self.randlength > 1.5 * self.startlength:
+			self.randlength = int(1.5* self.startlength)
 
 
 

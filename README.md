@@ -18,12 +18,11 @@ Scientific Method:
     Accounting for Evolution in Shape:
         Limit # of blocks for both
         Limit # of motors for both
-        Sensor Likelihoods are equal in both control and evolution, also set a potential cap on # of sensors per bot in both
+        Sensor Likelihoods are equal in both control and evolution, cap # of sensors
         Run several times, to see if evolution takes truly different path
 
     Accounting for Synaptic Weights:
-        Either fixed weight for synapses or random discrete weight numbers from a list, ex. (-1,-0.5,0.5,1)
-            Fixed Weight of 1 in both control and evolved
+        Weights are randomly decided at start and can not be changed through mutation, evolution does not affect synaptic weights
 
 Technical Specifications:
 
