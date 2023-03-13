@@ -2,7 +2,7 @@
 from solution import SOLUTION
 import constants as c
 import copy
-#import os
+import os
 import numpy
 import pickle
 #import time
@@ -10,12 +10,11 @@ import pickle
 
 
 class PARALLEL_HILL_CLIMBER:
-	def __init__(self, picklename):
+	def __init__(self, picklename, randseed):
 		#os.system("rm brain*.nndf")
 		#os.system("rm fitness*.txt")
 		self.parents = {}
 		self.nextAvailableID = 0
-		randseed = c.randomSeed
 		for a in range(c.populationSize):
 				self.parents[a] = SOLUTION(self.nextAvailableID, randseed)
 				if randseed != None:
@@ -23,15 +22,19 @@ class PARALLEL_HILL_CLIMBER:
 				self.nextAvailableID = self.nextAvailableID + 1    
 
 		self.sample = picklename
+		self.fitarrays = numpy.zeros((500,10))
+		os.system("mkdir pickles/"+picklename)
+		self.BestFitness = 0
+		
 		#print(self.parents)
 		#exit()
 
 	def Evolve(self):
 		self.Evaluate(self.parents)
-
+		self.Print(0)
 		# self.parent.Evaluate("GUI")
 		for currentGeneration in range(c.numberOfGenerations):
-			self.Evolve_For_One_Generation()
+			self.Evolve_For_One_Generation(currentGeneration)
 			print("generation"+ str(currentGeneration))
 
 		self.Show_Best()
@@ -45,11 +48,11 @@ class PARALLEL_HILL_CLIMBER:
 			xyz[parent].Wait_For_Simulation_To_End()
 			#print(self.parents[parent].fitness)
 
-	def Evolve_For_One_Generation(self):
+	def Evolve_For_One_Generation(self,abc):
 		self.Spawn()
 		self.Mutate()
 		self.Evaluate(self.children)
-		self.Print()
+		self.Print(abc)
 
 		self.Select()
 
@@ -70,21 +73,27 @@ class PARALLEL_HILL_CLIMBER:
 			if self.children[child].fitness > self.parents[child].fitness:
 				self.parents[child] = self.children[child]
 
-	def Print(self):
+	def Print(self,gennum):
 #		#for parent in self.parents:
 #			#self.parents[parent].Evaluate("DIRECT")
 #			print("\n")
 #			print("parent: " + str(self.parents[parent].fitness))
 #			print("child " + str(self.children[parent].fitness))
 #			print("\n")
+		abc = [self.parents[parent].fitness for parent in self.parents]
+		self.fitarrays[gennum, :] = abc
+		minarg = numpy.argmax(abc)
+		if self.parents[minarg].fitness > self.BestFitness:
+			self.BestFitness = self.parents[minarg].fitness
+			picklefile = open("pickles/" + self.sample+"/" +"generation"+str(gennum), 'wb')
+			pickle.dump(self.parents[minarg], picklefile)
+			picklefile.close()
+		# minarg = numpy.argmax(parentfitness)
+		# print()
 		
-		parentfitness = [self.parents[parent].fitness for parent in self.parents]
-		minarg = numpy.argmax(parentfitness)
-		print()
-		
-		fil = open(self.sample + ".txt", "a")
-		fil.write(str(self.parents[minarg].fitness) + " ")
-		fil.close()
+		# fil = open(self.sample + ".txt", "a")
+		# fil.write(str(self.parents[minarg].fitness) + " ")
+		# fil.close()
 
 	def Show_Best(self):
 
@@ -96,7 +105,8 @@ class PARALLEL_HILL_CLIMBER:
 		picklefile = open(self.sample, 'wb')
 		pickle.dump(self.parents[minarg], picklefile)
 		picklefile.close()
-		
+		#arrayfilepath = 
+		numpy.savetxt(self.sample+"txt", self.fitarrays)
 		#time.sleep(5)
 		picklefile2 = open(self.sample, 'rb')
 		pickled = pickle.load(picklefile2)

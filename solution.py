@@ -133,7 +133,9 @@ class SOLUTION:
 				if distancecenters - (sizeblocktobeadded[b]/2.0) - (a[1][b]/2.0) < -0.05:
 					counter+= 1
 			
-			if counter >2:
+			#print(counter)
+			if counter == 3:
+				#print("overlappppppp")
 				return False
 		return True
 

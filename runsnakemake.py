@@ -5,7 +5,7 @@ import sys
 
 os.system("rm fitness*.txt")
 os.system("rm world*.sdf")
-phc = PARALLEL_HILL_CLIMBER(sys.argv[1])
+phc = PARALLEL_HILL_CLIMBER(sys.argv[1], int(sys.argv[2]))
 
 phc.Evolve()
 exit()
