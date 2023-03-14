@@ -1,8 +1,23 @@
 import numpy
 import matplotlib.pyplot
-targetvalues = numpy.loadtxt("ControlAllConnected345591549Seedtxt")
-targetvalues = numpy.amax(targetvalues, axis = 1)
-matplotlib.pyplot.plot(targetvalues, linewidth = 2, label = "Backleg")
+import os
+
+#print(os.listdir())
+xyz = []
+currentplot = "HYPOneConnected"
+
+for a in os.listdir():
+    if "Seedtxt" in a and currentplot in a:
+        xyz.append(a)
+
+print(xyz)
+indexx = 0
+targetvalues = [0] * len(xyz)
+for b in xyz:
+    targetvalues[indexx] = numpy.loadtxt(b)
+    targetvalues[indexx] = numpy.amax(targetvalues[indexx], axis = 1)
+    matplotlib.pyplot.plot(targetvalues[indexx], linewidth = 2, label = b)
+    indexx += 1
 # backLegSensorValues = numpy.load("data/backLegSensorValues.npy")
 # frontLegSensorValues = numpy.load("data/frontLegSensorValues.npy")
 # print(backLegSensorValues)
