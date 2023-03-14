@@ -7,8 +7,8 @@ Scientific Method:
 
 
     NO EVOLUTION SYNAPSES(CONTROL):
-        Scenario 1: every sensor to every motor, immutable
-        Scenario 2: one sensor to one motor, immutable pairings not changed by mutation
+        Scenario 1: every sensor to every motor, immutable, DONE
+        Scenario 2: one sensor to one motor if possible, from the first motor added to minimize mutation impact, immutable pairings not changed by mutation, unless a sensor or motor is deleted physically
 
     EVOLVED SYNAPSES:
         Scenario 1: Sensors that can connect to multiple motors, flexible pairings
@@ -18,11 +18,11 @@ Scientific Method:
     Accounting for Evolution in Shape:
         Limit # of blocks for both
         Limit # of motors for both
-        Sensor Likelihoods are equal in both control and evolution, cap # of sensors
+        Sensor Likelihoods are equal in both control and evolution
         Run several times, to see if evolution takes truly different path
 
     Accounting for Synaptic Weights:
-        Weights are randomly decided at start and can not be changed through mutation, evolution does not affect synaptic weights
+        Weights are randomly decided at start (-1 or 1) and can not be changed through mutation, evolution does not affect synaptic weights
 
 Technical Specifications:
 

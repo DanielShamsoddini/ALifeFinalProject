@@ -115,6 +115,7 @@ class SOLUTION:
 		
 #		print(self.cubename)
 #		print(self.jointnames)
+		
 		pyrosim.End()
 			
 	def addArrSizes(self, parentindex, jointloc):
@@ -147,8 +148,7 @@ class SOLUTION:
 			return z
 		else:
 			return self.a[x][y]
-   
-   
+
 	def Generate_Brain(self,finalorno):
 		pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")
 		neurontracker = 0
@@ -167,15 +167,23 @@ class SOLUTION:
 			pyrosim.Send_Motor_Neuron(name = neurontracker, jointName = b)
 			neurontracker+=1
 
-
-		#synapses
 		self.numsynapses= 0
-		for currentRow in numofSensors:
-			for currentColumn in numofJoints:
-				#print(len(self.weights))
-				#print(self.numsynapses)
-				pyrosim.Send_Synapse(sourceNeuronName = currentRow , targetNeuronName = currentColumn, weight = self.weights[self.numsynapses])
+		for a in numofSensors:
+			if len(numofJoints) > 0:
+				currentmotor = numofJoints.pop(0)
+				pyrosim.Send_Synapse(sourceNeuronName = a , targetNeuronName = currentmotor, weight = self.weights[self.numsynapses])
 				self.numsynapses+=1
+
+				
+
+		#control all connected synapses
+		# self.numsynapses= 0
+		# for currentRow in numofSensors:
+		# 	for currentColumn in numofJoints:
+		# 		#print(len(self.weights))
+		# 		#print(self.numsynapses)
+		# 		pyrosim.Send_Synapse(sourceNeuronName = currentRow , targetNeuronName = currentColumn, weight = self.weights[self.numsynapses])
+		# 		self.numsynapses+=1
 		pyrosim.End()
 
 	#def Evaluate(self, dOrG):
