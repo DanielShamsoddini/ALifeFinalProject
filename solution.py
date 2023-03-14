@@ -140,9 +140,14 @@ class SOLUTION:
 		for b in self.jointnames:
 			self.initialmotors.append(b)
 
-		randmotors = self.initialmotors.copy()
-		for x in self.initialsensors:
-			self.pairings.append((x, randmotors.pop(random.randint(0, (len(randmotors) - 1) ))))
+		randsample = random.sample(self.initialmotors, len(self.initialmotors))
+		if len(randsample) > 1:
+			for x in self.initialsensors:
+				if len(randsample) > 0:
+					self.pairings.append((x, randsample.pop()))
+
+		print(self.pairings)
+
 
 
 
@@ -297,7 +302,8 @@ class SOLUTION:
 		probabilitypreludeint = random.randint(1,5)
 
 		if probabilitypreludeint == 1:
-			self.pairings.pop(random.randint(0, len(self.pairings) - 1))
+			if len(self.pairings) > 1:
+				self.pairings.pop(random.randint(0, len(self.pairings) - 1))
 		elif probabilitypreludeint == 2:
 			conflicting = self.nonconflicting()
 			if conflicting is not None:
