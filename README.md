@@ -50,9 +50,9 @@ Technical Specifications:
 ###To Run Saved Simulations:
     Set the simulationsettings variable in constants.py to 0,1,2, or 3 depending on which scenario your file is. Incorrect settings may cause issues.
     Then, run python3 picklerunner with one parameter, your file name
-        eg. python3 picklerunner.py readmedemonstration
+        eg. **python3 picklerunner.py readmedemonstration**
             or
-            python3 picklerunner.py pickles/readmedemonstration/generation0
+            **python3 picklerunner.py pickles/readmedemonstration/generation0**
     
         
     
