@@ -118,9 +118,9 @@ class SOLUTION:
 #		print(self.jointnames)
 		if self.firsttime:
 			self.firstgenerator()
-			print("first time")
+			#print("first time")
 			self.firsttime = False
-			print(self.firsttime)
+			#print(self.firsttime)
 		pyrosim.End()
 			
 	def addArrSizes(self, parentindex, jointloc):
@@ -142,7 +142,7 @@ class SOLUTION:
 
 		randmotors = self.initialmotors.copy()
 		for x in self.initialsensors:
-			self.pairings.append((x, randmotors.pop(0, (len(randmotors) - 1) )))
+			self.pairings.append((x, randmotors.pop(random.randint(0, (len(randmotors) - 1) ))))
 
 
 
@@ -172,12 +172,27 @@ class SOLUTION:
 			return self.a[x][y]
 
 	def nonconflicting(self):
+		#print("conflict check")
 		randrun = random.sample(self.final1, len(self.final1))
 		randrun222 = random.sample(self.final2, len(self.final2))
 		for a in randrun:
-			for b in randrun222:
-				if (a[1],b[1]) not in self.pairings:
-					return (a[1],b[1])
+			falsecheck = True
+			for xyz in self.pairings:
+				if a[1] == xyz[0]:
+					falsecheck = False
+			if falsecheck:
+				for b in randrun222:
+					falsecheck2 = True
+					for xyz in self.pairings:
+						if b[1] == xyz[1]:
+							falsecheck2 = False	
+					if falsecheck2 and ((a[1],b[1]) not in self.pairings):
+						# print("conflict resolved")
+						# print(self.pairings)
+						# print((a[1],b[1]))
+						return (a[1],b[1])
+					
+		
 			
 
 
@@ -232,7 +247,7 @@ class SOLUTION:
 		# 		pyrosim.Send_Synapse(sourceNeuronName = currentRow , targetNeuronName = currentColumn, weight = self.weights[self.numsynapses])
 		# 		self.numsynapses+=1
 		pyrosim.End()
-		exit()
+		#exit()
 
 	#def Evaluate(self, dOrG):
 
@@ -256,7 +271,7 @@ class SOLUTION:
 		self.Create_World()
 		self.Create_Body()
 		self.Generate_Brain(False)
-
+		#exit()
 		# while not os.path.exists("world.sdf"):
 		#   time.sleep(0.01)
 		# while not os.path.exists("body.urdf"):
@@ -282,9 +297,11 @@ class SOLUTION:
 		probabilitypreludeint = random.randint(1,5)
 
 		if probabilitypreludeint == 1:
-			self.pairings.pop(random.randint(0, len(self.pairings)))
+			self.pairings.pop(random.randint(0, len(self.pairings) - 1))
 		elif probabilitypreludeint == 2:
-			self.pairings.append(self.nonconflicting())
+			conflicting = self.nonconflicting()
+			if conflicting is not None:
+				self.pairings.append(conflicting)
 
 		probabilityint = random.randint(1,10)
 		#print(probabilityint)
