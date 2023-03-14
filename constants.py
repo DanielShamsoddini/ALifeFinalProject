@@ -1,6 +1,6 @@
 
 #settings for the experiment, 0 is control all connected, 1 is control only single synapse pairs, 2 is evolve single synapse pairs, 3 is evolve multiple pairs
-simulationsettings = 3
+simulationsettings = 1
 
 #randomSeed = None
 minsize = 0.3

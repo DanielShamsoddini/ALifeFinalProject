@@ -249,7 +249,7 @@ class SOLUTION:
 			for a in numofSensors:
 				if len(numofJoints) > 0:
 					currentmotor = numofJoints.pop(0)
-					pyrosim.Send_Synapse(sourceNeuronName = a , targetNeuronName = currentmotor, weight = self.weights[self.numsynapses])
+					pyrosim.Send_Synapse(sourceNeuronName = a[0] , targetNeuronName = currentmotor[0], weight = self.weights[self.numsynapses])
 					self.numsynapses+=1
 		#control all connected synapses
 		elif c.simulationsettings == 0:
@@ -258,7 +258,7 @@ class SOLUTION:
 				for currentColumn in numofJoints:
 					#print(len(self.weights))
 					#print(self.numsynapses)
-					pyrosim.Send_Synapse(sourceNeuronName = currentRow , targetNeuronName = currentColumn, weight = self.weights[self.numsynapses])
+					pyrosim.Send_Synapse(sourceNeuronName = currentRow[0] , targetNeuronName = currentColumn[0], weight = self.weights[self.numsynapses])
 					self.numsynapses+=1
 		pyrosim.End()
 		#exit()
