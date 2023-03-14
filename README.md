@@ -1,4 +1,9 @@
-#CS396 Artificial Life Final Project
+# CS396 Artificial Life Final Project
+
+This is my submission for the Scientific Hypothesis Final Project 
+
+It is heavily based on the ludobots MOOC on https://www.reddit.com/r/ludobots/ created by Professor Josh Bongard
+Credit to Raed Mughaus on StackExchange for helping to write confidence interval grapher code, https://stackoverflow.com/a/70949996
 
 Scientific Method:
     hypothesis: having synapses evolve, and further allowing them to connect to multiple motors improves locomotion evolution, potentially even playing a role in the shape evolution
@@ -22,17 +27,41 @@ Scientific Method:
         Run several times, to see if evolution takes truly different path
 
     Accounting for Synaptic Weights:
-        Weights are randomly decided at start (-1 or 1) and can not be changed through mutation, evolution does not affect synaptic weights
+        Weights are randomly decided at start (between either -1 or 1) and can not be changed through mutation, evolution does not affect synaptic weights
 
 Technical Specifications:
 
-    Program: Uses python library multiprocessing to improve performance for parallel
+    Fitness: The fitness of the robots is decided by a simple check of the final x coordinate position of the robots base block at the end of its lifespan
+    
 
-    Fitness:
+    Mutation: Mutations are handled by a call to the Mutate() function inside of each Solution Class 
+    In the mutate function
+    
+    Independently of that, for the Hypothesis tests, each mutation call has 
 
-    Mutation:
 
-
-Known Issue:
+### Known Issue:
     The system only checks for overlaps when making the body before simulation starts, so occasionally a motor can cause two blocks to go into eachother and overlap after simulation starts
+    
+### To Run Simulations:
+    Set the simulationsettings variable in constants.py to 0,1,2, or 3 depending on which scenario you wish to test
+    
+        0 is control all connected, 1 is control only single synapse pairs, 2 is evolve single synapse pairs, 3 is evolve multiple pairs
+    Then, run python3 runsnakemake.py with two parameters, the name of your simulation and the random seed you wish to use
+        eg. `python3 runsnakemake.py readmedemonstration 123456789`
+        
+        Note: random seeds can only be in the format of unsigned 32 bit ints due to numpy constraints. No negative numbers!
+        
+### To Run Saved Simulations:
+    Set the simulationsettings variable in constants.py to 0,1,2, or 3 depending on which scenario your file is. Incorrect settings may cause issues.
+    Then, run python3 picklerunner with one parameter, your file name
+        eg. `python3 picklerunner.py readmedemonstration`
+            or
+            `python3 picklerunner.py pickles/readmedemonstration/generation0`
+    
+        
+    
+    
+    
+    
 
