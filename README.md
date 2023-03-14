@@ -1,4 +1,4 @@
-CS396 Artificial Life Final Project
+#CS396 Artificial Life Final Project
 
 This is my submission for the Scientific Hypothesis Final Project 
 
@@ -37,17 +37,17 @@ Technical Specifications:
     Mutation:
 
 
-Known Issue:
+###Known Issue:
     The system only checks for overlaps when making the body before simulation starts, so occasionally a motor can cause two blocks to go into eachother and overlap after simulation starts
     
-To Run Simulations:
+###To Run Simulations:
     Set the simulationsettings variable in constants.py to 0,1,2, or 3 depending on which scenario you wish to test
         0 is control all connected, 1 is control only single synapse pairs, 2 is evolve single synapse pairs, 3 is evolve multiple pairs
     Then, run python3 runsnakemake.py with two parameters, the name of your simulation and the random seed you wish to use
         eg. python3 runsnakemake.py readmedemonstration 123456789
         Note: random seeds can only be in the format of unsigned 32 bit ints due to numpy constraints. No negative numbers!
         
-To Run Saved Simulations:
+###To Run Saved Simulations:
     Set the simulationsettings variable in constants.py to 0,1,2, or 3 depending on which scenario your file is. Incorrect settings may cause issues.
     Then, run python3 picklerunner with one parameter, your file name
         eg. python3 picklerunner.py readmedemonstration
