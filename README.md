@@ -6,10 +6,10 @@ It is heavily based on the ludobots MOOC, particularly the parallel hill climber
 
 Code from Professor Bongard's pyrosim, at the link https://github.com/jbongard/pyrosim, was also used
 
-Credit to Raed Mughaus on StackExchange for helping to write confidence interval grapher code, https://stackoverflow.com/a/70949996
+Credit to Raed Mughaus on StackExchange for helping to write the confidence interval grapher code, https://stackoverflow.com/a/70949996
 
 Scientific Method:
-    Hypothesis: Having synapses be able to evolve alongside bodies improves locomotion distance, with multiple synaptic pairings between motors and sensors further improving locomotion distance
+    Hypothesis: Having synapses be able to evolve alongside bodies improves locomotion distance for my parallel hill climber, with multiple synaptic pairings between motors and sensors further improving locomotion distance
 
     To test this I ran 500 Generations of 10 robots per population, with 5 different random seeds, for each of these 4 scenarios
 
@@ -26,7 +26,7 @@ Scientific Method:
 
 
     Accounting for Evolution in Shape:
-        Limit # of blocks for both, 1.5 * the starting length, which is randomly decided between 6-12 for all robots
+        Limited # of blocks for both, 1.5 * the starting length, which is randomly decided between 6-12 for all robots
         Sensor Likelihoods are equal in both control and evolution
         Run several times with different random seeds, to see if evolution takes truly different path
 
@@ -35,7 +35,29 @@ Scientific Method:
 
 ### Observations and Conclusion
     Observations:
-        What I observed was rather different than what I expected for the most part. 
+        What I observed was rather different than what I expected for the most part. While the Control scenario with one sensor for each motor did end up performing much worse than the other three, as I expected, the Control with every sensor connected to every motor performing the best on average was quite a suprise. I was also suprised to find that there wasnt a large difference in the averages for the two Hypothesis Scenarios, with them performing approximately equally.
+
+         Graphs of the four scenarios best fitness charts, seperate and then combined:
+
+        The confidence interval:
+
+
+        One thing I noticed from observing the simulations in action, was that many of the final robots optimized to essentially vibrate their way across the world, with small rapid movements, something which I believe takes fewer actuating motors than actual leg movement. Some potential solutions to this could be to increase the values of synaptic weights possible, to evolutionarily incentivize robots with more movement, or to perhaps increase the range of motor movement.
+
+
+    Conclusion:
+        From the data observed, I can not say that evolving synapses leads to further locomotion, with the data observed seeming to suggest the opposite, that having every motor connected to every sensor leads to greater distance traveled. Furthermore, there is no yet apparent difference between 
+
+    Future Inquiry:
+        Run more simulations to see if a pattern becomes apparent with more accurate confidence intervals
+        Alter the way bodies are generated so that vibration movement is less likely
+        Potentially see if better brains can evolve given different weight values, or with more generations
+        Change the types of joints, potentially add a ball and socket joint like discussed in class, or change axis of rotation
+        See how having a fixed body impacts neural evolution and whether it reveals a difference between these scenarios
+
+
+
+   
 
 
 
@@ -44,26 +66,35 @@ Scientific Method:
     Body: The evolution of the body is done through 
 
 
+    Brain: See the above Hypothesis section for a diagram of how the brains are created/evolved depending on the scenario 
 
     Fitness: The fitness of the robots is decided by a simple check of the final x coordinate position of the robots base block at the end of its lifespan
     
 
     Mutation: Mutations are handled by a call to the Mutate() function inside of each Solution Class 
-    In the mutate function
-    
-    Independently of that, for the Hypothesis tests, each mutation call has 
+        In the mutate function there is a 
+            40% chance that a blocks size and connection directions are randomly changed
+            40% chance that the number of blocks is either increased or decreased by 1, so 20% chance each
+            20% chance that the number of blocks is increased or decreased by 2, 10% chance each
+        
+        Furthermore, for scenarios in which the brain is allowed to evolve, there is a seperate and independent:
+            20% chance that a sensor motor pairing is removed 
+            20% chance that a sensor motor pairing is added, if one exists that does not violate the conditions of the scenario
+
+        Here is a diagram of such mutations
+
+    Environment: The environment is a simple plain flat world with a floor without any defining characteristics. Creatures face no obstacles in movement.
 
 
 ### Known Issue:
-    The system only checks for overlaps when making the body before simulation starts, so occasionally a motor can cause two blocks to go into eachother and overlap after simulation starts
+    The system only checks for overlaps when making the body before simulation starts, so a motor joint can cause two blocks to go into eachother and overlap after simulation starts
     
 ### To Run Simulations:
     Set the simulationsettings variable in constants.py to 0,1,2, or 3 depending on which scenario you wish to test
-    
         0 is control all connected, 1 is control only single synapse pairs, 2 is evolve single synapse pairs, 3 is evolve multiple pairs
+
     Then, run python3 runsnakemake.py with two parameters, the name of your simulation and the random seed you wish to use
         eg. `python3 runsnakemake.py readmedemonstration 123456789`
-        
         Note: random seeds can only be in the format of unsigned 32 bit ints due to numpy constraints. No negative numbers!
         
 ### To Run Saved Simulations:
