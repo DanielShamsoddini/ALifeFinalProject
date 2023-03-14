@@ -42,9 +42,11 @@ Technical Specifications:
     
 ###To Run Simulations:
     Set the simulationsettings variable in constants.py to 0,1,2, or 3 depending on which scenario you wish to test
+    
         0 is control all connected, 1 is control only single synapse pairs, 2 is evolve single synapse pairs, 3 is evolve multiple pairs
     Then, run python3 runsnakemake.py with two parameters, the name of your simulation and the random seed you wish to use
         eg. `python3 runsnakemake.py readmedemonstration 123456789`
+        
         Note: random seeds can only be in the format of unsigned 32 bit ints due to numpy constraints. No negative numbers!
         
 ###To Run Saved Simulations:
