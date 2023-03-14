@@ -33,5 +33,6 @@ Technical Specifications:
     Mutation:
 
 
-
+Known Issue:
+    The system only checks for overlaps when making the body before simulation starts, so occasionally a motor can cause two blocks to go into eachother and overlap after simulation starts
 
