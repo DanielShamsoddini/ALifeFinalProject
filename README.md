@@ -26,13 +26,17 @@ Scientific Method:
         Run several times, to see if evolution takes truly different path
 
     Accounting for Synaptic Weights:
-        Weights are randomly decided at start (-1 or 1) and can not be changed through mutation, evolution does not affect synaptic weights
+        Weights are randomly decided at start (between either -1 or 1) and can not be changed through mutation, evolution does not affect synaptic weights
 
 Technical Specifications:
 
-    Fitness: 
+    Fitness: The fitness of the robots is decided by a simple check of the final x coordinate position of the robots base block at the end of its lifespan
+    
 
-    Mutation:
+    Mutation: Mutations are handled by a call to the Mutate() function inside of each Solution Class 
+    In the mutate function
+    
+    Independently of that, for the Hypothesis tests, each mutation call has 
 
 
 ### Known Issue:
