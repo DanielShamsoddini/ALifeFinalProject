@@ -3,6 +3,7 @@
 This is my submission for the Scientific Hypothesis Final Project 
 
 It is heavily based on the ludobots MOOC on https://www.reddit.com/r/ludobots/ created by Professor Josh Bongard
+Credit to Raed Mughaus on StackExchange for helping to write confidence interval grapher code, https://stackoverflow.com/a/70949996
 
 Scientific Method:
     hypothesis: having synapses evolve, and further allowing them to connect to multiple motors improves locomotion evolution, potentially even playing a role in the shape evolution
