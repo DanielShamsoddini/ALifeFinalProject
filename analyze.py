@@ -1,9 +1,8 @@
 import numpy
 import matplotlib.pyplot
-targetvalues = numpy.load("data/targetAnglesB.npy")
-matplotlib.pyplot.plot(targetvalues, linewidth = 5, label = "Backleg")
-targetvalues2 = numpy.load("data/targetAnglesF.npy")
-matplotlib.pyplot.plot(targetvalues2, label = "Frontleg")
+targetvalues = numpy.loadtxt("ControlAllConnected345591549Seedtxt")
+targetvalues = numpy.amax(targetvalues, axis = 1)
+matplotlib.pyplot.plot(targetvalues, linewidth = 2, label = "Backleg")
 # backLegSensorValues = numpy.load("data/backLegSensorValues.npy")
 # frontLegSensorValues = numpy.load("data/frontLegSensorValues.npy")
 # print(backLegSensorValues)
