@@ -1,3 +1,37 @@
 pybullet build time: Jan  8 2023 16:01:20
-b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
-expected a world element, continuing without it.
+Version = 4.1 Metal - 83
+Vendor = Apple
+Renderer = Apple M1
+b3Printf: Selected demo: Physics Server
+startThreads creating 1 threads.
+starting thread 0
+started thread 0 
+MotionThreadFunc thread started
+b3Printf: b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+
+b3Printf: expected a world element, continuing without it.
+numActiveThreads = 0
+stopping threads
+Thread with taskId 0 exiting
+Thread TERMINATED
+destroy semaphore
+semaphore destroyed
+destroy main semaphore
+main semaphore destroyed
+Traceback (most recent call last):
+  File "/Users/danix/ALife/ALifeFinalProject/simulate.py", line 6, in <module>
+    simulation = SIMULATION(dorg, brainnn)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/danix/ALife/ALifeFinalProject/simulation.py", line 26, in __init__
+    self.Run()
+  File "/Users/danix/ALife/ALifeFinalProject/simulation.py", line 35, in Run
+    self.robot.Sense()
+  File "/Users/danix/ALife/ALifeFinalProject/robot.py", line 33, in Sense
+    self.sensors[sensorss].Get_Value()
+  File "/Users/danix/ALife/ALifeFinalProject/sensor.py", line 10, in Get_Value
+    self.values[self.a] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/danix/ALife/ALifeFinalProject/pyrosim/pyrosim.py", line 53, in Get_Touch_Sensor_Value_For_Link
+    pts = p.getContactPoints()
+          ^^^^^^^^^^^^^^^^^^^^
+pybullet.error: Not connected to physics server.

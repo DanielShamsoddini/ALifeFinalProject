@@ -1,35 +1,49 @@
 # CS396 Artificial Life Final Project
 
-This is my submission for the Scientific Hypothesis Final Project 
+This is my submission for the Scientific Hypothesis Final Project for CS 396 Artificial Life
 
-It is heavily based on the ludobots MOOC on https://www.reddit.com/r/ludobots/ created by Professor Josh Bongard
+It is heavily based on the ludobots MOOC, particularly the parallel hill climber, on https://www.reddit.com/r/ludobots/ created by Professor Josh Bongard
+
+Code from Professor Bongard's pyrosim, at the link https://github.com/jbongard/pyrosim, was also used
+
 Credit to Raed Mughaus on StackExchange for helping to write confidence interval grapher code, https://stackoverflow.com/a/70949996
 
 Scientific Method:
-    hypothesis: having synapses evolve, and further allowing them to connect to multiple motors improves locomotion evolution, potentially even playing a role in the shape evolution
+    Hypothesis: Having synapses be able to evolve alongside bodies improves locomotion distance, with multiple synaptic pairings between motors and sensors further improving locomotion distance
 
-    sensors can evolve synaptic connections as random
-
+    To test this I ran 500 Generations of 10 robots per population, with 5 different random seeds, for each of these 4 scenarios
 
     NO EVOLUTION SYNAPSES(CONTROL):
-        Scenario 1: every sensor to every motor, immutable, DONE
-        Scenario 2: one sensor to one motor if possible, from the first motor added to minimize mutation impact, immutable pairings not changed by mutation, unless a sensor or motor is deleted physically
+        Scenario 1: Every sensor to every motor, immutable connections except for sensor/motor addition or deletion
+        Scenario 2: One sensor to one motor if possible, from the first sensor and motor added to minimize mutation impact, immutable pairings not changed by mutation, unless a sensor or motor is deleted physically
 
     EVOLVED SYNAPSES:
-        Scenario 1: Sensors that can connect to multiple motors, flexible pairings
-        Scenario 2: Sensors can only connect to one motor, flexible pairings
+        Scenario 3: Sensors can only connect to one motor and vice versa, flexible pairings
+        Scenario 4: Sensors that can connect to multiple motors, flexible pairings
+        
+    Here is a diagram of the hypothetical neural makeups of each of these scenarios:
+
 
 
     Accounting for Evolution in Shape:
-        Limit # of blocks for both
-        Limit # of motors for both
+        Limit # of blocks for both, 1.5 * the starting length, which is randomly decided between 6-12 for all robots
         Sensor Likelihoods are equal in both control and evolution
-        Run several times, to see if evolution takes truly different path
+        Run several times with different random seeds, to see if evolution takes truly different path
 
     Accounting for Synaptic Weights:
-        Weights are randomly decided at start (between either -1 or 1) and can not be changed through mutation, evolution does not affect synaptic weights
+        Weights are randomly decided at start (between either -1 or 1) and can not be changed through mutation, evolution does not affect synaptic weights except when a sensor or motor is added/removed
 
-Technical Specifications:
+### Observations and Conclusion
+    Observations:
+        What I observed was rather different than what I expected for the most part. 
+
+
+
+### Technical Specifications:
+
+    Body: The evolution of the body is done through 
+
+
 
     Fitness: The fitness of the robots is decided by a simple check of the final x coordinate position of the robots base block at the end of its lifespan
     
