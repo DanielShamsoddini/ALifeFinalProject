@@ -20,6 +20,7 @@ class SOLUTION:
 		self.weights = [random.choice([-1,1]) for a in range(1000)]
 		#self.sensorrandom = [random.randint(0, 5) for a in range(self.randlength+1)]
 		self.blocks = [[self.randsize(), random.choice(("Green", "Blue")), self.randomdirgenerator()] for a in range(self.randlength*4)]
+		self.firsttime = True
 		self.jointnames = []
 		self.cubename = []
 
@@ -115,7 +116,11 @@ class SOLUTION:
 		
 #		print(self.cubename)
 #		print(self.jointnames)
-		
+		if self.firsttime:
+			self.firstgenerator()
+			print("first time")
+			self.firsttime = False
+			print(self.firsttime)
 		pyrosim.End()
 			
 	def addArrSizes(self, parentindex, jointloc):
@@ -124,6 +129,23 @@ class SOLUTION:
 		for a in range(0,3):
 			x[a] += self.absoluteposandsize[parentindex][0][a] + jointloc[a] + y[a]
 		return x
+
+	def firstgenerator(self):
+		self.initialsensors = []
+		self.initialmotors = []
+		self.pairings = []
+		for a in self.cubename:
+			if a[1] == "Green":
+				self.initialsensors.append(a[0])
+		for b in self.jointnames:
+			self.initialmotors.append(b)
+
+		randmotors = self.initialmotors.copy()
+		for x in self.initialsensors:
+			self.pairings.append((x, randmotors.pop(0, (len(randmotors) - 1) )))
+
+
+
 
 	def doesnotoverlap(self, jointpositionblocktobeadded, sizeblocktobeadded):
 		
@@ -149,6 +171,16 @@ class SOLUTION:
 		else:
 			return self.a[x][y]
 
+	def nonconflicting(self):
+		randrun = random.sample(self.final1, len(self.final1))
+		randrun222 = random.sample(self.final2, len(self.final2))
+		for a in randrun:
+			for b in randrun222:
+				if (a[1],b[1]) not in self.pairings:
+					return (a[1],b[1])
+			
+
+
 	def Generate_Brain(self,finalorno):
 		pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")
 		neurontracker = 0
@@ -158,21 +190,36 @@ class SOLUTION:
 		#sensors
 		for a in self.cubename:
 			if a[1] == "Green":
-				numofSensors.append(neurontracker)
+				numofSensors.append((neurontracker, a[0]))
 				pyrosim.Send_Sensor_Neuron(name = neurontracker, linkName = a[0])
 				neurontracker+= 1
 		#motors
 		for b in self.jointnames:
-			numofJoints.append(neurontracker)
+			numofJoints.append((neurontracker, b))
 			pyrosim.Send_Motor_Neuron(name = neurontracker, jointName = b)
 			neurontracker+=1
 
 		self.numsynapses= 0
-		for a in numofSensors:
-			if len(numofJoints) > 0:
-				currentmotor = numofJoints.pop(0)
-				pyrosim.Send_Synapse(sourceNeuronName = a , targetNeuronName = currentmotor, weight = self.weights[self.numsynapses])
-				self.numsynapses+=1
+		for xyz in self.pairings:
+			sensorname = xyz[0]
+			motorname = xyz[1]
+			for abc in numofSensors:
+				if sensorname == abc[1]:
+					for cdefg in numofJoints:
+						if motorname == cdefg[1]:
+							pyrosim.Send_Synapse(sourceNeuronName = abc[0] , targetNeuronName = cdefg[0], weight = self.weights[self.numsynapses])
+							self.numsynapses+=1
+
+		self.final1 = numofSensors
+		self.final2 = numofJoints
+
+
+		# self.numsynapses= 0
+		# for a in numofSensors:
+		# 	if len(numofJoints) > 0:
+		# 		currentmotor = numofJoints.pop(0)
+		# 		pyrosim.Send_Synapse(sourceNeuronName = a , targetNeuronName = currentmotor, weight = self.weights[self.numsynapses])
+		# 		self.numsynapses+=1
 
 				
 
@@ -185,6 +232,7 @@ class SOLUTION:
 		# 		pyrosim.Send_Synapse(sourceNeuronName = currentRow , targetNeuronName = currentColumn, weight = self.weights[self.numsynapses])
 		# 		self.numsynapses+=1
 		pyrosim.End()
+		exit()
 
 	#def Evaluate(self, dOrG):
 
@@ -231,6 +279,13 @@ class SOLUTION:
 
 	def Mutate(self):
 		#self.weights[random.randint(0,numpy.array(self.weights).shape[0]-1)][random.randint(0,numpy.array(self.weights).shape[1]-1)] = (random.random()*2) - 1
+		probabilitypreludeint = random.randint(1,5)
+
+		if probabilitypreludeint == 1:
+			self.pairings.pop(random.randint(0, len(self.pairings)))
+		elif probabilitypreludeint == 2:
+			self.pairings.append(self.nonconflicting())
+
 		probabilityint = random.randint(1,10)
 		#print(probabilityint)
 		if probabilityint > 4:
