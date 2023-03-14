@@ -44,15 +44,15 @@ Technical Specifications:
     Set the simulationsettings variable in constants.py to 0,1,2, or 3 depending on which scenario you wish to test
         0 is control all connected, 1 is control only single synapse pairs, 2 is evolve single synapse pairs, 3 is evolve multiple pairs
     Then, run python3 runsnakemake.py with two parameters, the name of your simulation and the random seed you wish to use
-        eg. python3 runsnakemake.py readmedemonstration 123456789
+        eg. `python3 runsnakemake.py readmedemonstration 123456789`
         Note: random seeds can only be in the format of unsigned 32 bit ints due to numpy constraints. No negative numbers!
         
 ###To Run Saved Simulations:
     Set the simulationsettings variable in constants.py to 0,1,2, or 3 depending on which scenario your file is. Incorrect settings may cause issues.
     Then, run python3 picklerunner with one parameter, your file name
-        eg. **python3 picklerunner.py readmedemonstration**
+        eg. `python3 picklerunner.py readmedemonstration`
             or
-            **python3 picklerunner.py pickles/readmedemonstration/generation0**
+            `python3 picklerunner.py pickles/readmedemonstration/generation0`
     
         
     
