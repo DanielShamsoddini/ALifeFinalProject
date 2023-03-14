@@ -4,10 +4,10 @@ import os
 
 #print(os.listdir())
 xyz = []
-currentplot = "HYPOneConnected"
+currentplot = "HYPMultConnected"
 
 for a in os.listdir():
-    if "Seedtxt" in a and currentplot in a:
+    if "Seedtxt" in a:
         xyz.append(a)
 
 print(xyz)

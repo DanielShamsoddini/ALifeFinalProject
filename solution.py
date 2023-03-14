@@ -116,11 +116,12 @@ class SOLUTION:
 		
 #		print(self.cubename)
 #		print(self.jointnames)
-		if self.firsttime:
-			self.firstgenerator()
-			#print("first time")
-			self.firsttime = False
-			#print(self.firsttime)
+		if c.simulationsettings > 1:
+			if self.firsttime:
+				self.firstgenerator()
+				#print("first time")
+				self.firsttime = False
+				#print(self.firsttime)
 		pyrosim.End()
 			
 	def addArrSizes(self, parentindex, jointloc):
@@ -197,7 +198,17 @@ class SOLUTION:
 						# print((a[1],b[1]))
 						return (a[1],b[1])
 					
-		
+	def nonconflictingmult(self):
+		#print("conflict check")
+		randrun = random.sample(self.final1, len(self.final1))
+		randrun222 = random.sample(self.final2, len(self.final2))
+		for a in randrun:
+			for b in randrun222:
+				if ((a[1],b[1]) not in self.pairings):
+						# print("conflict resolved")
+						# print(self.pairings)
+						# print((a[1],b[1]))
+					return (a[1],b[1])
 			
 
 
@@ -219,38 +230,36 @@ class SOLUTION:
 			pyrosim.Send_Motor_Neuron(name = neurontracker, jointName = b)
 			neurontracker+=1
 
-		self.numsynapses= 0
-		for xyz in self.pairings:
-			sensorname = xyz[0]
-			motorname = xyz[1]
-			for abc in numofSensors:
-				if sensorname == abc[1]:
-					for cdefg in numofJoints:
-						if motorname == cdefg[1]:
-							pyrosim.Send_Synapse(sourceNeuronName = abc[0] , targetNeuronName = cdefg[0], weight = self.weights[self.numsynapses])
-							self.numsynapses+=1
+		if c.simulationsettings > 1:
+			self.numsynapses= 0
+			for xyz in self.pairings:
+				sensorname = xyz[0]
+				motorname = xyz[1]
+				for abc in numofSensors:
+					if sensorname == abc[1]:
+						for cdefg in numofJoints:
+							if motorname == cdefg[1]:
+								pyrosim.Send_Synapse(sourceNeuronName = abc[0] , targetNeuronName = cdefg[0], weight = self.weights[self.numsynapses])
+								self.numsynapses+=1
 
-		self.final1 = numofSensors
-		self.final2 = numofJoints
-
-
-		# self.numsynapses= 0
-		# for a in numofSensors:
-		# 	if len(numofJoints) > 0:
-		# 		currentmotor = numofJoints.pop(0)
-		# 		pyrosim.Send_Synapse(sourceNeuronName = a , targetNeuronName = currentmotor, weight = self.weights[self.numsynapses])
-		# 		self.numsynapses+=1
-
-				
-
+			self.final1 = numofSensors
+			self.final2 = numofJoints
+		elif c.simulationsettings == 1:
+			self.numsynapses= 0
+			for a in numofSensors:
+				if len(numofJoints) > 0:
+					currentmotor = numofJoints.pop(0)
+					pyrosim.Send_Synapse(sourceNeuronName = a , targetNeuronName = currentmotor, weight = self.weights[self.numsynapses])
+					self.numsynapses+=1
 		#control all connected synapses
-		# self.numsynapses= 0
-		# for currentRow in numofSensors:
-		# 	for currentColumn in numofJoints:
-		# 		#print(len(self.weights))
-		# 		#print(self.numsynapses)
-		# 		pyrosim.Send_Synapse(sourceNeuronName = currentRow , targetNeuronName = currentColumn, weight = self.weights[self.numsynapses])
-		# 		self.numsynapses+=1
+		elif c.simulationsettings == 0:
+			self.numsynapses= 0
+			for currentRow in numofSensors:
+				for currentColumn in numofJoints:
+					#print(len(self.weights))
+					#print(self.numsynapses)
+					pyrosim.Send_Synapse(sourceNeuronName = currentRow , targetNeuronName = currentColumn, weight = self.weights[self.numsynapses])
+					self.numsynapses+=1
 		pyrosim.End()
 		#exit()
 
@@ -300,14 +309,17 @@ class SOLUTION:
 	def Mutate(self):
 		#self.weights[random.randint(0,numpy.array(self.weights).shape[0]-1)][random.randint(0,numpy.array(self.weights).shape[1]-1)] = (random.random()*2) - 1
 		probabilitypreludeint = random.randint(1,5)
-
-		if probabilitypreludeint == 1:
-			if len(self.pairings) > 1:
-				self.pairings.pop(random.randint(0, len(self.pairings) - 1))
-		elif probabilitypreludeint == 2:
-			conflicting = self.nonconflicting()
-			if conflicting is not None:
-				self.pairings.append(conflicting)
+		if c.simulationsettings > 1:
+			if probabilitypreludeint == 1:
+				if len(self.pairings) > 1:
+					self.pairings.pop(random.randint(0, len(self.pairings) - 1))
+			elif probabilitypreludeint == 2:
+				if c.simulationsettings == 2:
+					conflicting = self.nonconflicting()
+				elif c.simulationsettings == 3:
+					conflicting = self.nonconflictingmult()
+				if conflicting is not None:
+					self.pairings.append(conflicting)
 
 		probabilityint = random.randint(1,10)
 		#print(probabilityint)
