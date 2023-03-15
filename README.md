@@ -39,11 +39,12 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
 
 
    Accounting for Evolution in Shape:
-   Limited # of blocks for both, 1.5 * the starting length, which is randomly decided between 6-12 for all robots
+   
+      Limited # of blocks for both, 1.5 * the starting length, which is randomly decided between 6-12 for all robots
         
-   Sensor Likelihoods are equal in both control and evolution
+      Sensor Likelihoods are equal in both control and evolution
         
-   Run several times with different random seeds, to see if evolution takes truly different path
+      Run several times with different random seeds, to see if evolution takes truly different path
 
    Accounting for Synaptic Weights:
         Weights are randomly decided at start (between either -1 or 1) and can not be changed through mutation, evolution does not affect synaptic weights except when a sensor or motor is added/removed
