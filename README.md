@@ -134,7 +134,13 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
 
 
    For the hypothesis, where brains can evolve:
-            mutate brains.jpg
+   
+      Parent Generation
+   ![parentgen mutated brains](https://user-images.githubusercontent.com/23564433/225204241-42e0403d-3da3-4ff8-b1ed-03586fc56914.png)
+   
+      Child Generation
+![childgeneration mutated brains](https://user-images.githubusercontent.com/23564433/225204262-fbaca871-6d17-4d8a-a1fa-8ad1d69c1b40.png)
+
             
 
    Environment: The environment is a simple plain flat world with a floor without any defining characteristics. Creatures face no obstacles in movement.
