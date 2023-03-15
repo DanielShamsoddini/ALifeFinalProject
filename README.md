@@ -71,7 +71,13 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
    ![CI FIGURE](https://user-images.githubusercontent.com/23564433/225202917-b968e83f-93ee-4bb7-b8ac-9e165fae1b1a.png)
 
 
-   One thing I noticed from observing the simulations in action, was that many of the final robots optimized to essentially vibrate their way across the world, with small rapid movements, something which I believe takes fewer actuating motors than actual leg movement. Some potential solutions to this could be to increase the values of synaptic weights possible, to evolutionarily incentivize robots with more movement, or to perhaps increase the range of motor movement.
+   One thing I noticed from observing the simulations in action, was that many of the final robots optimized to essentially vibrate their way across the world, with small rapid movements, something which I believe takes fewer actuating motors than actual leg movement. 
+   
+   Here is a gif of this behavior in action:
+   ![Screen Recording 2023-03-14 at 11 42 30 PM](https://user-images.githubusercontent.com/23564433/225209516-8aba6e07-8b50-4091-a5ac-1e15140c6a15.gif)
+
+   
+   Some potential solutions to this could be to increase the values of synaptic weights possible, to evolutionarily incentivize robots with more movement, or to perhaps increase the range of motor movement.
 
 
   Conclusion:
