@@ -16,6 +16,8 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
 
 
 ### Scientific Method:
+    After doing all of our assignments I realized even though the bodies are all evolving throughout our generations, what about the brains? Surely there must be a better way to evolve brains, more akin to how humans evolved, through building or removing synapses? This then led me to my hypothesis...
+    
     Hypothesis: Having synapses be able to evolve alongside bodies improves locomotion distance for my parallel hill climber, with multiple synaptic pairings between motors and sensors further improving locomotion distance
 
     To test this I ran 500 Generations of 10 robots per population, with 5 different random seeds, for each of these 4 scenarios
