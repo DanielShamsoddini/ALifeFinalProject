@@ -119,7 +119,8 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
       
 ![newparallel](https://user-images.githubusercontent.com/23564433/225207593-11417592-b8bb-41b2-a54b-c482fba1018f.png)
 
-![imgonline-com-ua-twotoone-1jfPedzmbb](https://user-images.githubusercontent.com/23564433/225206509-d2ad4db8-6a18-4e08-add7-04981a45f0db.jpg)
+![imgonline-com-ua-twotoone-1jfPedzmbb](https://user-images.githubusercontent.com/23564433/225207732-af8c00ad-dbd2-4902-a9ff-365cbd16dae6.jpg)
+
 
    Mutation: 
    Mutations are handled by a call to the Mutate() function inside of each Solution Class(the class for each robot) 
