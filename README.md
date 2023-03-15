@@ -9,6 +9,9 @@ Code from Professor Bongard's pyrosim, at the link https://github.com/jbongard/p
 Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib confidence interval grapher code, https://stackoverflow.com/a/70949996
 
 
+## Description
+    This is a simulator 
+
 
 ### Scientific Method:
     Hypothesis: Having synapses be able to evolve alongside bodies improves locomotion distance for my parallel hill climber, with multiple synaptic pairings between motors and sensors further improving locomotion distance
@@ -24,7 +27,7 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
         Scenario 4: Sensors that can connect to multiple motors, flexible pairings
         
     Here is a diagram of the hypothetical neural makeups of each of these scenarios:
-
+        4 scenarios brains jpeg
 
 
     Accounting for Evolution in Shape:
@@ -39,16 +42,17 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
     Observations:
         What I observed was rather different than what I expected for the most part. While the Control scenario with one sensor for each motor did end up performing much worse than the other three, as I expected, the Control with every sensor connected to every motor performing the best on average was quite a suprise. I was also suprised to find that there wasnt a large difference in the averages for the two Hypothesis Scenarios, with them performing approximately equally.
 
-         Graphs of the four scenarios best fitness charts, seperate and then combined:
-
+        Graphs of the four scenarios best fitness charts, seperate and then combined:
+            4 scenario pics
+            all combined pic
         The confidence interval:
-
+            ci figure.png
 
         One thing I noticed from observing the simulations in action, was that many of the final robots optimized to essentially vibrate their way across the world, with small rapid movements, something which I believe takes fewer actuating motors than actual leg movement. Some potential solutions to this could be to increase the values of synaptic weights possible, to evolutionarily incentivize robots with more movement, or to perhaps increase the range of motor movement.
 
 
     Conclusion:
-        From the data observed, I can not say that evolving synapses leads to further locomotion, with the data observed seeming to suggest the opposite, that having every motor connected to every sensor leads to greater distance traveled. Furthermore, there is no yet apparent difference between 
+        From the data observed, I can not say that evolving synapses leads to further locomotion, with the data observed seeming to suggest the opposite, that having every motor connected to every sensor leads to greater distance traveled. Furthermore, there is no yet apparent difference between having synapses be able to evolve one to one or unrestricted between motors and sensors.
 
     Future Inquiry:
         Run more simulations to see if a pattern becomes apparent with more accurate confidence intervals
@@ -85,7 +89,11 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
 
         Here is a diagram of such mutations:
 
-        
+
+
+            For the hypothesis, where brains can evolve:
+            mutate brains.jpg
+            
 
     Environment: The environment is a simple plain flat world with a floor without any defining characteristics. Creatures face no obstacles in movement.
         Here is a simple diagram covering the essentials:
@@ -94,7 +102,10 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
 
 ### Known Issue:
     The system only checks for overlaps when making the body before simulation starts, so a motor joint can cause two blocks to go into eachother and overlap after simulation starts
-    
+
+### Requirements
+    The program requires pybullet to be installed and has only been tested on Mac. If running on Windows, any rm, mkdir, or cp commands must be changed to their Windows equivalents.
+
 ### To Run Simulations:
     Set the simulationsettings variable in constants.py to 0,1,2, or 3 depending on which scenario you wish to test
         0 is control all connected, 1 is control only single synapse pairs, 2 is evolve single synapse pairs, 3 is evolve multiple pairs

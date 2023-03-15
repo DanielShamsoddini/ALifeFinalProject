@@ -6,10 +6,10 @@ import math
 
 #print(os.listdir())
 xyz = []
-currentplot = "ControlAllConnected"
+currentplot = "HYPMultConnected"
 
 for a in os.listdir():
-    if "Seedtxt" in a and currentplot in a:
+    if "Seedtxt" in a:
         xyz.append(a)
 
 print(xyz)
@@ -21,6 +21,6 @@ for b in xyz:
     plt.plot(targetvalues[b], linewidth = 2, label = b)
     indexx += 1
 
-plt.title(currentplot)
+plt.title("All Simulations")
 plt.legend()
 plt.show()
