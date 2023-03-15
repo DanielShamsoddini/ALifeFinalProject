@@ -52,7 +52,7 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
 
    Accounting for Synaptic Weights:
    
-        Weights are randomly decided at start (between either -1 or 1) and can not be changed through mutation, evolution does not affect synaptic weights except when a sensor or motor is added/removed
+        Weights are randomly decided at start (either -1 or 1) and can not be changed through mutation, evolution does not affect synaptic weights except when a sensor or motor is added/removed
 
 ### Observations and Conclusion
    Observations:
