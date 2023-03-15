@@ -47,6 +47,7 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
       Run several times with different random seeds, to see if evolution takes truly different path
 
    Accounting for Synaptic Weights:
+   
         Weights are randomly decided at start (between either -1 or 1) and can not be changed through mutation, evolution does not affect synaptic weights except when a sensor or motor is added/removed
 
 ### Observations and Conclusion
