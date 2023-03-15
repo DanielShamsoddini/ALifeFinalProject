@@ -112,14 +112,21 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
    Fitness: The fitness of the robots is decided by a simple check of the final x coordinate position of the robots base block at the end of its lifespan, a larger fitness is considered better, incentivizing movement along the positive x axis
 
 
-   Mutation: Mutations are handled by a call to the Mutate() function inside of each Solution Class(the class for each robot) 
-        In the mutate function there is a 
+   Mutation: 
+   Mutations are handled by a call to the Mutate() function inside of each Solution Class(the class for each robot) 
+        
+        In the mutate function there is a:
+        
             40% chance that a blocks size and connection directions are randomly changed
+            
             40% chance that the number of blocks is either increased or decreased by 1, so 20% chance each
+            
             20% chance that the number of blocks is increased or decreased by 2, 10% chance each
         
    Furthermore, for scenarios in which the brain is allowed to evolve, there is a seperate and independent:
+            
             20% chance that a sensor motor pairing is removed 
+            
             20% chance that a sensor motor pairing is added, if one exists that does not violate the conditions of the scenario
 
    Here is a diagram of such mutations:
