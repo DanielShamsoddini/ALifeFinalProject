@@ -33,7 +33,8 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
         Scenario 4: Sensors that can connect to multiple motors, flexible pairings
         
    Here is a diagram of the hypothetical neural makeups of each of these scenarios:
-        4 scenarios brains jpeg
+   ![imgonline-com-ua-twotoone-jC7ss93zwG6hVZCr](https://user-images.githubusercontent.com/23564433/225202408-7f8b6e89-b9d5-4ae3-8ae3-a522e80facb9.jpg)
+
 
 
    Accounting for Evolution in Shape:
