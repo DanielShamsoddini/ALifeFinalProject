@@ -109,8 +109,17 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
 
    Brain: See the above Hypothesis section for a diagram of how the brains are created/evolved depending on the scenario 
 
-   Fitness: The fitness of the robots is decided by a simple check of the final x coordinate position of the robots base block at the end of its lifespan, a larger fitness is considered better, incentivizing movement along the positive x axis
+   Fitness: 
+      The fitness of the robots is decided by a simple check of the final x coordinate position of the robots base block at the end of its lifespan, a larger fitness is considered better, incentivizing movement along the positive x axis
 
+   Evolution: 
+      The system handles evolution through the parallelhillclimber.py class created as a part of Ludobots, albeit with a few modifications. It pickles in a folder the new best fitness, whenever a fitness score beats the previous recordholder. The parallelhillclibmer.py class in general works through running a Solution.py file, which is responsible for creating bodies and brains, for each member of the population. It then runs a simulation for each of these Solution classes and afterwards copies them to create children. These children are then mutated through Solution.py's Mutate() function and then run a simulation of their own. Afterwards, they are compared to their parents by their fitness scores and if theirs are greater, they replace their parents for the next cycle of the parallel hill climber. This is done until the number of generations is reached and then at the end, the robot with the best fitness is pickled. 
+      
+      Here are diagrams conveying how this functions:
+      
+![newparallel](https://user-images.githubusercontent.com/23564433/225207593-11417592-b8bb-41b2-a54b-c482fba1018f.png)
+
+![imgonline-com-ua-twotoone-1jfPedzmbb](https://user-images.githubusercontent.com/23564433/225206509-d2ad4db8-6a18-4e08-add7-04981a45f0db.jpg)
 
    Mutation: 
    Mutations are handled by a call to the Mutate() function inside of each Solution Class(the class for each robot) 
@@ -130,8 +139,12 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
             20% chance that a sensor motor pairing is added, if one exists that does not violate the conditions of the scenario
 
    Here is a diagram of such mutations:
+   
+      In this scenario, the 20% chance to remove a link has transpired
+      
+      Parent Generation:
 
-
+      Child Generation:
 
    For the hypothesis, where brains can evolve:
    
@@ -144,7 +157,6 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
             
 
    Environment: The environment is a simple plain flat world with a floor without any defining characteristics. Creatures face no obstacles in movement.
-        Here is a simple diagram covering the essentials:
 
 
 
