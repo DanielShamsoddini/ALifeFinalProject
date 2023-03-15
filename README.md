@@ -64,7 +64,7 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
 
    The confidence interval:
    
-    ![CI FIGURE](https://user-images.githubusercontent.com/23564433/225202917-b968e83f-93ee-4bb7-b8ac-9e165fae1b1a.png)
+   ![CI FIGURE](https://user-images.githubusercontent.com/23564433/225202917-b968e83f-93ee-4bb7-b8ac-9e165fae1b1a.png)
 
 
    One thing I noticed from observing the simulations in action, was that many of the final robots optimized to essentially vibrate their way across the world, with small rapid movements, something which I believe takes fewer actuating motors than actual leg movement. Some potential solutions to this could be to increase the values of synaptic weights possible, to evolutionarily incentivize robots with more movement, or to perhaps increase the range of motor movement.
