@@ -144,8 +144,12 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
       In this scenario, the 20% chance to remove a link has transpired
       
       Parent Generation:
+  
+  ![jumper blueprint](https://user-images.githubusercontent.com/23564433/225207901-34dea606-b536-4748-a8e8-bc4e06c62c51.png)
 
       Child Generation:
+  ![jumper final](https://user-images.githubusercontent.com/23564433/225208056-1ac64b2c-abf0-4dba-a8b5-b18bf0168e46.png)
+
 
    For the hypothesis, where brains can evolve:
    
