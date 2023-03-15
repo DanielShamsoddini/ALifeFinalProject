@@ -70,6 +70,7 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
 ### Technical Specifications:
 
     Body: The evolution of the body is done through 
+   ![theoretical geneprint](https://user-images.githubusercontent.com/23564433/225198933-1be1eb12-be7e-423e-8cdf-15a0533296c5.png)
 
 
     Brain: See the above Hypothesis section for a diagram of how the brains are created/evolved depending on the scenario 
