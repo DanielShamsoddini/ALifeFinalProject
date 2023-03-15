@@ -14,7 +14,7 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
    
    Trailer Video: https://youtu.be/uiFjitC-cHE
    
-   Two Minute Full Video: https://youtu.be/pICpI_Gqy_E
+   Two Minute Full Video: https://youtu.be/JKTDE07n8ak
 
 
 ### Scientific Method:
