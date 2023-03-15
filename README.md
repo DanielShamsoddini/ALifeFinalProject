@@ -72,6 +72,7 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
     Body: The evolution of the body is done through building a database of blocks before starting, with each block having three qualities(sensor/not, random dimensions, random directions of connection). The simulation then starts by adding the base block no matter what, and then reading to see how many connections the base block then has. For each direction of connection, a block is then added, and then these blocks undergo the same process, to see how many connections they then have, whether they are sensor blocks or not, and then these blocks are added to the blocks connected to the base block, and so on until the maximum number of blocks is reached. 
     This diagram is a theoretical diagram to show how this happens, each arrow is theoretical, the base block is guaranteed to have a connection but the rest are not
    ![theoretical geneprint](https://user-images.githubusercontent.com/23564433/225198933-1be1eb12-be7e-423e-8cdf-15a0533296c5.png)
+   
    Here is another diagram showing the blueprint for a block fully evolved side by side with the block itself:
 
 
