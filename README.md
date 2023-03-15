@@ -10,7 +10,9 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
 
 
 ## Description
-    This is a simulator 
+    This is a parallel hill climber simulator designed to move as far as possible in the positive x-axis
+    Trailer Video: https://youtu.be/uiFjitC-cHE
+    Two Minute Full Video: https://youtu.be/pICpI_Gqy_E
 
 
 ### Scientific Method:
