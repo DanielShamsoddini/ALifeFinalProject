@@ -25,11 +25,15 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
    To test this I ran 500 Generations of 10 robots per population, with 5 different random seeds, for each of these 4 scenarios
 
    NO EVOLUTION SYNAPSES(CONTROL):
+   
         Scenario 1: Every sensor to every motor, immutable connections except for sensor/motor addition or deletion
+        
         Scenario 2: One sensor to one motor if possible, from the first sensor and motor added to minimize mutation impact, immutable pairings not changed by mutation, unless a sensor or motor is deleted physically
 
    EVOLVED SYNAPSES:
+   
         Scenario 3: Sensors can only connect to one motor and vice versa, flexible pairings
+        
         Scenario 4: Sensors that can connect to multiple motors, flexible pairings
         
    Here is a diagram of the hypothetical neural makeups of each of these scenarios:
