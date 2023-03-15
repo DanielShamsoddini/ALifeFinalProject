@@ -6,9 +6,11 @@ It is heavily based on the ludobots MOOC, particularly the parallel hill climber
 
 Code from Professor Bongard's pyrosim, at the link https://github.com/jbongard/pyrosim, was also used
 
-Credit to Raed Mughaus on StackExchange for helping to write the confidence interval grapher code, https://stackoverflow.com/a/70949996
+Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib confidence interval grapher code, https://stackoverflow.com/a/70949996
 
-Scientific Method:
+
+
+### Scientific Method:
     Hypothesis: Having synapses be able to evolve alongside bodies improves locomotion distance for my parallel hill climber, with multiple synaptic pairings between motors and sensors further improving locomotion distance
 
     To test this I ran 500 Generations of 10 robots per population, with 5 different random seeds, for each of these 4 scenarios
@@ -68,10 +70,10 @@ Scientific Method:
 
     Brain: See the above Hypothesis section for a diagram of how the brains are created/evolved depending on the scenario 
 
-    Fitness: The fitness of the robots is decided by a simple check of the final x coordinate position of the robots base block at the end of its lifespan
-    
+    Fitness: The fitness of the robots is decided by a simple check of the final x coordinate position of the robots base block at the end of its lifespan, a larger fitness is considered better, incentivizing movement along the positive x axis
 
-    Mutation: Mutations are handled by a call to the Mutate() function inside of each Solution Class 
+
+    Mutation: Mutations are handled by a call to the Mutate() function inside of each Solution Class(the class for each robot) 
         In the mutate function there is a 
             40% chance that a blocks size and connection directions are randomly changed
             40% chance that the number of blocks is either increased or decreased by 1, so 20% chance each
@@ -81,9 +83,13 @@ Scientific Method:
             20% chance that a sensor motor pairing is removed 
             20% chance that a sensor motor pairing is added, if one exists that does not violate the conditions of the scenario
 
-        Here is a diagram of such mutations
+        Here is a diagram of such mutations:
+
+        
 
     Environment: The environment is a simple plain flat world with a floor without any defining characteristics. Creatures face no obstacles in movement.
+        Here is a simple diagram covering the essentials:
+
 
 
 ### Known Issue:
