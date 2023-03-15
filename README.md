@@ -55,6 +55,7 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
    What I observed was rather different than what I expected for the most part. While the Control scenario with one sensor for each motor did end up performing much worse than the other three, as I expected, the Control with every sensor connected to every motor performing the best on average was quite a suprise. I was also suprised to find that there wasnt a large difference in the averages for the two Hypothesis Scenarios, with them performing approximately equally.
 
    Graphs of the four scenarios best fitness charts, seperate and then combined:
+   
    ![control all](https://user-images.githubusercontent.com/23564433/225202824-443ef9e5-dd52-4c3d-8456-170a75cbd14e.png)
    ![control one](https://user-images.githubusercontent.com/23564433/225202822-c7a79e4a-c38e-4839-a3e3-38cd26313cf2.png)
    ![hyp one](https://user-images.githubusercontent.com/23564433/225202819-8e03dd7b-87c0-4526-aa7c-a1499d22fb90.png)
@@ -62,6 +63,7 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
    ![all sims](https://user-images.githubusercontent.com/23564433/225202776-ee962e82-a2fa-486e-86c1-cee11e5b0546.png)
 
    The confidence interval:
+   
     ![CI FIGURE](https://user-images.githubusercontent.com/23564433/225202917-b968e83f-93ee-4bb7-b8ac-9e165fae1b1a.png)
 
 
