@@ -78,10 +78,15 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
   From the data observed, I can not say that evolving synapses leads to further locomotion, with the data observed seeming to suggest the opposite, that having every motor connected to every sensor leads to greater distance traveled. Furthermore, there is no yet apparent difference between having synapses be able to evolve one to one or unrestricted between motors and sensors.
 
   Future Inquiry:
+  
         Run more simulations to see if a pattern becomes apparent with more accurate confidence intervals
+        
         Alter the way bodies are generated so that vibration movement is less likely
+        
         Potentially see if better brains can evolve given different weight values, or with more generations
+        
         Change the types of joints, potentially add a ball and socket joint like discussed in class, or change axis of rotation
+        
         See how having a fixed body impacts neural evolution and whether it reveals a difference between these scenarios
 
 
