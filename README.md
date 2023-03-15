@@ -77,6 +77,7 @@ Credit to Raed Mughaus on StackExchange for helping to write the mathplotlib con
    
    Here is another diagram showing the blueprint for a block fully evolved side by side with the block itself:
 
+![jumper side by side](https://user-images.githubusercontent.com/23564433/225201038-0d36e063-e4e0-4a64-a154-50987365185e.jpeg)
 
     Brain: See the above Hypothesis section for a diagram of how the brains are created/evolved depending on the scenario 
 
